@@ -2,12 +2,11 @@ import React from 'react';
 import {createRoot} from 'react-dom/client';
 import './assets/global.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import rootReducer from './store/reducers/index'
 
-const store = configureStore(rootReducer)
+const store = configureStore({reducer: rootReducer}); //https://stackoverflow.com/questions/71216724/redux-toolkit-error-reducer-is-a-required-argument-and-must-be-a-function-o
 
 const root = createRoot(document.getElementById('root'));
 root.render(
@@ -17,8 +16,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
